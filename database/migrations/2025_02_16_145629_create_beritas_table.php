@@ -12,12 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('beritas', function (Blueprint $table) {
-            $table->id('id_berita');
+            $table->id('id_berita'); // Primary Key
             $table->string('judul_berita');
-            $table->text('deskripsi_berita');
-            $table->date('tanggal_rilis');
+            $table->text('deskripsi_berita')->nullable();
+            $table->date('tanggal_rilis')->nullable();
+
+            // Foreign Key ke Universitas
             $table->unsignedBigInteger('id_univ');
-            $table->foreign('id_univ')->references('id_univ')->on('universities')->onDelete('cascade');
+            $table->foreign('id_univ')->references('id_univ')->on('universitas')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

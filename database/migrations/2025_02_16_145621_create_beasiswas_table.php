@@ -12,13 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('beasiswas', function (Blueprint $table) {
-            $table->id('id_beasiswa');
+            $table->id('id_beasiswa'); // Primary Key
             $table->string('judul');
-            $table->text('deskripsi');
+            $table->text('deskripsi')->nullable();
             $table->text('persyaratan')->nullable();
             $table->date('deadline')->nullable();
+
+            // Foreign Key ke Universitas
             $table->unsignedBigInteger('id_univ');
-            $table->foreign('id_univ')->references('id_univ')->on('universities')->onDelete('cascade');
+            $table->foreign('id_univ')->references('id_univ')->on('universitas')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

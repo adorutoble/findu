@@ -12,14 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jurusans', function (Blueprint $table) {
-            $table->id('id_jurusan');
+            $table->id('id_jurusan'); // Primary Key
             $table->string('nama_jurusan');
-            $table->string('prodi');
+
+            // Foreign Key ke Fakultas
+            $table->unsignedBigInteger('id_fakultas');
+            $table->foreign('id_fakultas')->references('id_fakultas')->on('fakultas')->onDelete('cascade');
+
+            // Foreign Key ke Universitas
             $table->unsignedBigInteger('id_univ');
-            $table->foreign('id_univ')->references('id_univ')->on('universities')->onDelete('cascade');
+            $table->foreign('id_univ')->references('id_univ')->on('universitas')->onDelete('cascade');
+
             $table->timestamps();
         });
-    }
+    }   
 
     /**
      * Reverse the migrations.
@@ -28,4 +34,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('jurusans');
     }
-};
+};  

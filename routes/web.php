@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UniversitasController;
 
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/perguruan-tinggi', function () {
-    return view('perguruantinggi');
-});
+// Route::get('/perguruan-tinggi', [UniversitasController::class, 'index']);
+Route::get('/perguruan-tinggi', [UniversitasController::class, 'index'])->name('perguruan-tinggi');
+
 
 Route::get('/beasiswa', function () {
     return view('beasiswa');

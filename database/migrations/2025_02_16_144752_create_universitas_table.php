@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('universities', function (Blueprint $table) {
-            $table->id('id_univ');
+        Schema::create('universitas', function (Blueprint $table) {
+            $table->id('id_univ'); // Primary Key
             $table->string('nama_univ');
-            $table->text('alamat');
+            $table->text('alamat')->nullable();
             $table->string('no_telp')->nullable();
             $table->string('website')->nullable();
             $table->text('deskripsi_univ')->nullable();
             $table->string('akreditasi')->nullable();
-            $table->string('stat_univ')->nullable();
+            $table->string('stat_univ'); // Negeri / Swasta
             $table->integer('jumlah_prodi')->default(0);
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('universities');
+        Schema::dropIfExists('universitas');
     }
 };
