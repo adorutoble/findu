@@ -6,7 +6,7 @@
             <p class="text-xl font-extrabold">Cari beasiswa untuk mendukung pendidikanmu!</p>
         </div>
         <div class="relative -mb-36">
-            <img src="./img/icon-hat.png" alt="Ilustrasi" class="h-52 mx-56">
+            <img src="./img/icon-hat.png" alt="Ilustrasi" class="h-52 mr-56">
         </div>
     </div>
     </section>
