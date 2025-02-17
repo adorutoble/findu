@@ -26,8 +26,7 @@
             <h2 class="text-2xl font-semibold text-[#444655] mb-6">Masuk</h2>
             
             <form method="POST" action="{{ route('login') }}" class="space-y-4">
-                @csrf
-                
+                @csrf           
                 <div>
                     <label for="email" class="block mb-2 text-[#444655]">Nama Pengguna</label>
                     <input id="email" type="text" name="email" placeholder="Masukan E-mail Kamu" required class="w-full px-4 py-3 border border-gray-100 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#233A75] bg-[#F1F1F1]">

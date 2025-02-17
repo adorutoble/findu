@@ -64,4 +64,16 @@ class UniversitasController extends Controller
         return view('perguruantinggi', compact('universitas', 'jurusanList', 'lokasiList', 'akreditasiList'));
     }    
 
+    // public function show($id)
+    // {
+    //     $universitas = Universitas::with('fakultas.jurusan')->findOrFail($id);
+    //     return view('detailpt', compact('universitas'));
+    // }
+
+
+    public function show($id)
+    {
+        $universitas = Universitas::findOrFail($id);
+        return view('detailpt', compact('universitas'));
+    }
 }

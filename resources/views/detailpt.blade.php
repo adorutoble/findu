@@ -9,22 +9,21 @@
             <div class="max-w-5xl mx-auto">
                 {{-- Breadcrumbs --}}
                 <nav class="my-4 text-sm">
-                    <a href="/perguruan-tinggi" class="text-white hover:text-gray-500"> Perguruan Tinggi</a>
+                    <a href="/perguruan-tinggi" class="text-white hover:text-gray-500">Perguruan Tinggi</a>
                     <span class="mx-2 text-white">/</span>
-                    <span class="text-white font-semibold">Detail Perguruan Tinggi</span>
+                    <span class="text-white font-semibold">{{ $universitas->nama_univ }}</span>
                 </nav>
 
                 <div class="bg-white p-6 rounded-xl shadow-md flex items-center justify-between border border-gray-200 relative">
                     <!-- Logo dan Informasi -->
                     <div class="flex items-center space-x-6">
-                        <img src="https://upload.wikimedia.org/wikipedia/id/thumb/0/0f/Makara_of_Universitas_Indonesia.svg/1200px-Makara_of_Universitas_Indonesia.svg.png" 
-                             alt="Universitas Indonesia" class="w-20 h-20">
+                        <img src="{{ $universitas->link_logo }}" alt="{{ $universitas->nama_univ }}" class="w-20 h-20">
                         <div>
                             <h1 class="text-xl font-bold flex items-center space-x-2">
-                                Universitas Indonesia
+                                {{ $universitas->nama_univ }}
                                 <img src="./img/icon-approval.png" alt="Verified" class="ml-2 w-5 h-5">
                             </h1>
-                            <p class="text-sm text-gray-600">Jl. Lingkar, Pondok Cina, Kecamatan Beji, Kota Depok</p>
+                            <p class="text-sm text-gray-600">{{ $universitas->alamat }}</p>
                             <div class="mt-5">
                                 <button class="bg-[#233A75] hover:bg-blue-900 text-white px-4 py-2 rounded-lg">Lihat Lokasi</button>
                             </div>
@@ -33,10 +32,10 @@
                     <div class="absolute bottom-4 right-4 flex flex-col items-end text-blue-900 space-y-1">
                         <span class="text-sm font-semibold flex space-x-1">
                             <img src="icon-telepon.png" />
-                            <span>021-7270020</span>
+                            <span>{{ $universitas->no_telp }}</span>
                         <a href="https://www.ui.ac.id" class="text-sm font-semibold flex space-x-1 hover:underline">
                             <img src="icon-web.png" />
-                            <span class="ml-6">www.ui.ac.id</span>
+                            <span class="ml-6">{{ $universitas->website }}</span>
                         </a>
                     </div>
                 </div>
@@ -48,7 +47,7 @@
         <div class="max-w-6xl mx-32 my-10 px-4 sm:px-6 lg:px-8">
             <h2 class="text-2xl font-bold text-gray-900 mb-6">Tentang Kampus</h2>
             <p class="text-justify">
-                Universitas Indonesia atau lebih dikenal dengan UI merupakan universitas modern, komprehensif, terbuka, multi budaya dan humanis yang mencakup  disiplin ilmu yang luas. Dengan tetap mempertahankan peringkat  universitas terbaik di Indonesia. Kampus utamanya berlokasi di daerah  utara Depok, Jawa Barat tepat di perbatasan dengan Jakarta Selatan dan   kampus lainnya berlokasi di daerah Salemba, Jakarta Pusat. Universitas  Indonesia telah menghasilkan kurang lebih 40.000 alumni dengan kualitas  unggul. Sesuai predikatnya sebagai universitas riset, UI tetap berupaya  untuk mencapai perolehan tertinggi dalam hal penemuan, pengembangan dan  difusi pengetahuan secara regional dan global.
+                {{ $universitas->deskripsi_univ}}
             </p>
         </div>
     </section>
@@ -58,10 +57,10 @@
             <!-- Detail Kampus -->
             <div class="bg-[#233A75] text-white p-6 rounded-xl shadow-md">
                 <h2 class="text-lg font-bold mb-2">Detail Kampus</h2>
-                <p>Status: PTN</p>
-                <p>Akreditasi: Unggul</p>
-                <p>Program Studi: 95</p>
-                <p>Fakultas: 16</p>
+                <p>Status: {{ $universitas->stat_univ }}</p>
+                <p>Akreditasi: {{ $universitas->akreditasi }}</p>
+                <p>Program Studi: {{ $universitas->jumlah_prodi }}</p>
+                <p>Fakultas: -</p>
                 <p>Biaya Pendaftaran: Rp. 500.000</p>
                 <p class="mt-2 font-semibold">Biaya UKT (Uang Kuliah Tunggal):</p>
                 <ul class="list-disc ml-5">
@@ -146,74 +145,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="border-t">
-                        <td class="py-3 px-4">1</td>
-                        <td class="py-3 px-4">Kedokteran</td>
-                        <td class="py-3 px-4">Fak. Kedokteran</td>
-                        <td class="py-3 px-4">A</td>
-                        <td class="py-3 px-4">180</td>
-                        <td class="py-3 px-4">12033</td>
-                        <td class="py-3 px-4"><button class="text-[#233A75] hover:underline">Detail</button></td>
-                    </tr>
-                    <tr class="border-t">
-                        <td class="py-3 px-4">2</td>
-                        <td class="py-3 px-4">Ilmu Gizi</td>
-                        <td class="py-3 px-4">Fak. Kedokteran</td>
-                        <td class="py-3 px-4">Unggul</td>
-                        <td class="py-3 px-4">180</td>
-                        <td class="py-3 px-4">12033</td>
-                        <td class="py-3 px-4"><button class="text-[#233A75] hover:underline">Detail</button></td>
-                    </tr>
-                    <tr class="border-t">
-                        <td class="py-3 px-4">3</td>
-                        <td class="py-3 px-4">Ilmu Biomedik</td>
-                        <td class="py-3 px-4">Fak. Kedokteran</td>
-                        <td class="py-3 px-4">Unggul</td>
-                        <td class="py-3 px-4">180</td>
-                        <td class="py-3 px-4">12033</td>
-                        <td class="py-3 px-4"><button class="text-[#233A75] hover:underline">Detail</button></td>
-                    </tr>
-                    <tr class="border-t">
-                        <td class="py-3 px-4">4</td>
-                        <td class="py-3 px-4">Ilmu Ekonomi</td>
-                        <td class="py-3 px-4">Fak. Ekonomi dan Bisnis</td>
-                        <td class="py-3 px-4">Unggul</td>
-                        <td class="py-3 px-4">180</td>
-                        <td class="py-3 px-4">12033</td>
-                        <td class="py-3 px-4"><button class="text-[#233A75] hover:underline">Detail</button></td>
-                    </tr>
-                    <tr class="border-t">
-                        <td class="py-3 px-4">4</td>
-                        <td class="py-3 px-4">Ilmu Ekonomi</td>
-                        <td class="py-3 px-4">Fak. Ekonomi dan Bisnis</td>
-                        <td class="py-3 px-4">Unggul</td>
-                        <td class="py-3 px-4">180</td>
-                        <td class="py-3 px-4">12033</td>
-                        <td class="py-3 px-4"><button class="text-[#233A75] hover:underline">Detail</button></td>
-                    </tr>
-                    <tr class="border-t">
-                        <td class="py-3 px-4">4</td>
-                        <td class="py-3 px-4">Ilmu Ekonomi</td>
-                        <td class="py-3 px-4">Fak. Ekonomi dan Bisnis</td>
-                        <td class="py-3 px-4">Unggul</td>
-                        <td class="py-3 px-4">180</td>
-                        <td class="py-3 px-4">12033</td>
-                        <td class="py-3 px-4"><button class="text-[#233A75] hover:underline">Detail</button></td>
-                    </tr>
-                    <tr class="border-t">
-                        <td class="py-3 px-4">4</td>
-                        <td class="py-3 px-4">Ilmu Ekonomi</td>
-                        <td class="py-3 px-4">Fak. Ekonomi dan Bisnis</td>
-                        <td class="py-3 px-4">Unggul</td>
-                        <td class="py-3 px-4">180</td>
-                        <td class="py-3 px-4">12033</td>
-                        <td class="py-3 px-4"><button class="text-[#233A75] hover:underline">Detail</button></td>
-                    </tr>
+                    @foreach ($universitas->fakultas as $fakultas)
+                            @foreach ($fakultas->jurusan as $index => $jurusan)
+                                <tr class="border-t">
+                                    <td class="py-3 px-4">{{ $loop->parent->index * count($fakultas->jurusan) + $index + 1 }}</td>
+                                    <td class="py-3 px-4">{{ $jurusan->nama_jurusan }}</td>
+                                    <td class="py-3 px-4">{{ $fakultas->nama_fakultas }}</td>
+                                    <td class="py-3 px-4">{{ $jurusan->akreditasi }}</td>
+                                </tr>
+                            @endforeach
+                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-</section>
+    </section>
 
      
 </x-layout>

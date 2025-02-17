@@ -11,7 +11,7 @@ class Jurusan extends Model
     
     protected $table = 'jurusans';
     protected $primaryKey = 'id_jurusan';
-    protected $fillable = ['nama_jurusan', 'prodi', 'id_fakultas', 'id_univ'];
+    protected $fillable = ['nama_jurusan', 'id_fakultas', 'id_univ'];
 
     // Relasi ke Fakultas
     public function fakultas()

@@ -86,12 +86,13 @@
             @else
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16">
                 @foreach($universitas as $univ)
-                <div class="bg-white shadow-sm rounded-2xl overflow-hidden w-80">
-                    <img src="{{ $univ->gambar_univ ?? 'https://via.placeholder.com/600x300' }}" alt="{{ $univ->nama_univ }}" class="w-full h-48 object-cover">
+                {{-- <div class="bg-white shadow-sm rounded-2xl overflow-hidden w-80"> --}}
+                <a href="{{ route('detailpt', ['id' => $univ->id_univ]) }}" class="block bg-white shadow-sm rounded-2xl overflow-hidden w-80 hover:shadow-md transition">
+                        <img src="{{ $univ->link_gambar ?? 'https://via.placeholder.com/600x300' }}" alt="{{ $univ->nama_univ }}" class="w-full h-48 object-cover">
                     <div class="p-5">
                         <div class="flex items-center justify-between pb-2">
                             <div class="flex items-center space-x-2">
-                                <img src="{{ $univ->logo_univ ?? 'https://via.placeholder.com/50x50' }}" class="w-7 h-7" alt="Logo">
+                                <img src="{{ $univ->link_logo ?? 'https://via.placeholder.com/50x50' }}" class="w-7 h-7" alt="Logo">
                                 <h3 class="text-sm font-semibold">{{ $univ->nama_univ }}</h3>
                             </div>
                             <img src="{{ asset('img/icon-approval.png') }}" class="w-5 h-5" alt="Approval Icon">
@@ -104,7 +105,8 @@
                             <strong>Lokasi:</strong> {{ $univ->alamat }}
                         </p>
                     </div>
-                </div>
+                {{-- </div> --}}
+                </a>
                 @endforeach
             </div>
             @endif

@@ -11,7 +11,7 @@ class Universitas extends Model
     
     protected $table = 'universitas';
     protected $primaryKey = 'id_univ';
-    protected $fillable = ['nama_univ', 'alamat', 'no_telp', 'website', 'deskripsi_univ', 'akreditasi', 'stat_univ', 'jumlah_prodi'];
+    protected $fillable = ['nama_univ', 'alamat', 'no_telp', 'website', 'deskripsi_univ', 'akreditasi', 'stat_univ', 'jumlah_prodi','link_logo','link_gambar'];
 
     // Relasi ke Fakultas
     public function fakultas()
@@ -19,4 +19,3 @@ class Universitas extends Model
         return $this->hasMany(Fakultas::class, 'id_univ');
     }
 }
-    
