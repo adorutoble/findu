@@ -13,7 +13,7 @@
 
             <!-- Kontak Kami -->
             <div>
-                <h3 class="text-lg font-semibold mb-3">Kontak Kami</h3>
+                <h3 class="text-md font-semibold mb-3">Kontak Kami</h3>
                 <p class="text-sm flex items-center space-x-2">
                     📞 <span>08765455490</span>
                 </p>
@@ -28,22 +28,22 @@
             <!-- Menu & Ikuti Kami -->
             <div class="flex justify-between md:justify-start md:space-x-16">
                 <div>
-                    <h3 class="text-lg font-semibold mb-3">Menu</h3>
+                    <h3 class="text-md font-semibold mb-3">Menu</h3>
                     <ul class="space-y-2 text-sm text-gray-300">
-                        <li>Beranda</li>
-                        <li>Perguruan Tinggi</li>
-                        <li>Beasiswa</li>
-                        <li>Berita</li>
+                        <li><a href="/">Beranda</a></li>
+                        <li><a href="/perguruan-tinggi">Perguruan Tinggi</a></li>
+                        <li><a href="/beasiswa">Beasiswa</a></li>
+                        <li><a href="/berita">Berita</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h3 class="text-lg font-semibold mb-3">Ikuti Kami</h3>
+                    <h3 class="text-md font-semibold mb-3">Ikuti Kami</h3>
                     <div class="flex space-x-3">
-                        <img src="./img/icon-facebook.png" alt="Facebook" class="w-6 h-6">
-                        <img src="./img/icon-instagram.png" alt="Instagram" class="w-6 h-6">
-                        <img src="./img/icon-twitter.png" alt="Twitter" class="w-6 h-6">
-                        <img src="./img/icon-youtube.png" alt="YouTube" class="w-6 h-6">
+                        <img src="./img/fb.png" alt="Facebook" class="border rounded-full p-1 w-6 h-6">
+                        <img src="./img/ig.png" alt="Instagram" class="border rounded-full p-1 w-6 h-6">
+                        <img src="./img/gh.png" alt="Twitter" class="border rounded-full p-1 w-6 h-6">
+                        <img src="./img/yt.png" alt="YouTube" class="border rounded-full p-1 w-6 h-6">
                     </div>
                 </div>
             </div>

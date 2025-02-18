@@ -21,31 +21,27 @@
         <div class="mt-6 grid grid-cols-2 gap-4">
             <div class="bg-[#233A75] text-white p-4 rounded-lg">
                 <h2 class="font-semibold">Pilihan Pertama</h2>
-                <select class="mt-2 w-full p-2 text-black rounded-xl" id="ptn1">
-                    <option>Pilih Perguruan Tinggi</option>
-                    <option>Universitas Indonesia</option>
-                    <option>Institut Teknologi Bandung</option>
+                <select class="mt-2 w-full p-2 text-black rounded-xl" id="ptn1" onchange="loadJurusan(1)">
+                    <option value="">Pilih Perguruan Tinggi</option>
+                    @foreach ($universitas as $univ)
+                        <option value="{{ $univ->id_univ }}">{{ $univ->nama_univ }}</option>
+                    @endforeach
                 </select>
                 <select class="mt-2 w-full p-2 text-black rounded-xl" id="prodi1">
                     <option>Pilih Program Studi</option>
-                    <option>Akuntansi</option>
-                    <option>Teknik Informatika</option>
-                    <option>Aktuaria</option>
                 </select>
             </div>
             
             <div class="bg-[#233A75] text-white p-4 rounded-lg">
                 <h2 class="font-semibold">Pilihan Kedua</h2>
-                <select class="mt-2 w-full p-2 text-black rounded-md" id="ptn2">
-                    <option>Pilih Perguruan Tinggi</option>
-                    <option>Universitas Indonesia</option>
-                    <option>Institut Teknologi Bandung</option>
+                <select class="mt-2 w-full p-2 text-black rounded-xl" id="ptn2" onchange="loadJurusan(2)">
+                    <option value="">Pilih Perguruan Tinggi</option>
+                    @foreach ($universitas as $univ)
+                        <option value="{{ $univ->id_univ }}">{{ $univ->nama_univ }}</option>
+                    @endforeach
                 </select>
                 <select class="mt-2 w-full p-2 text-black rounded-md" id="prodi2">
                     <option>Pilih Program Studi</option>
-                    <option>Akuntansi</option>
-                    <option>Teknik Informatika</option>
-                    <option>Aktuaria</option>
                 </select>
             </div>
         </div>
@@ -89,92 +85,124 @@
     </section>
 
     <script>
-        function showComparison() {
-    const ctxBar = document.getElementById("comparisonChart").getContext("2d");
-    const ctxPie = document.getElementById("peminatChart").getContext("2d");
+        document.getElementById("ptn1").addEventListener("change", function () {
+            loadJurusan(1);
+        });
+        document.getElementById("ptn2").addEventListener("change", function () {
+            loadJurusan(2);
+        });
 
-    // Hapus chart lama sebelum membuat yang baru
-    if (window.myBarChart) window.myBarChart.destroy();
-    if (window.myPieChart) window.myPieChart.destroy();
+        function loadJurusan(id) {
+            let ptn = document.getElementById("ptn" + id).value;
+            let prodi = document.getElementById("prodi" + id);
 
-    // Tampilkan container hasil perbandingan
-    document.getElementById("comparisonContainer").classList.remove("hidden");
+            if (ptn === "") {
+                prodi.innerHTML = "<option value=''>Pilih Program Studi</option>";
+                return;
+            }
 
-    // Bar Chart untuk daya tampung
-    window.myBarChart = new Chart(ctxBar, {
-        type: "bar",
-        data: {
-            labels: ["2021", "2022", "2023", "2024"],
-            datasets: [
-                {
-                    label: "Universitas Indonesia",
-                    backgroundColor: "#233A75",
-                    borderColor: "#233A75",
-                    borderWidth: 1,
-                    data: [20, 18, 16, 17]
+            fetch("{{ route('getJurusan') }}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
                 },
-                {
-                    label: "Institut Teknologi Bandung",
-                    backgroundColor: "#4c5c9c",
-                    borderColor: "#4c5c9c",
-                    borderWidth: 1,
-                    data: [25, 23, 21, 20]
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: { beginAtZero: true }
-            },
-            plugins: {
-                legend: {
-                    labels: {
-                        color: "#233A75"
+                body: JSON.stringify({ id_univ: ptn })
+            })
+            .then(response => response.json())
+            .then(data => {
+                prodi.innerHTML = "<option value=''>Pilih Program Studi</option>";
+                data.forEach(jurusan => {
+                    prodi.innerHTML += `<option value="${jurusan.id_jurusan}">${jurusan.nama_jurusan}</option>`;
+                });
+            })
+            .catch(error => console.error("Error:", error));
+
+        }
+
+        function showComparison() {
+            let ptn1 = document.getElementById("ptn1").value;
+            let prodi1 = document.getElementById("prodi1").value;
+            let ptn2 = document.getElementById("ptn2").value;
+            let prodi2 = document.getElementById("prodi2").value;
+
+            fetch("/bandingkan", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
+                },
+                body: JSON.stringify({ ptn1, prodi1, ptn2, prodi2 })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (window.myBarChart) window.myBarChart.destroy();
+                if (window.myPieChart) window.myPieChart.destroy();
+
+                document.getElementById("comparisonContainer").classList.remove("hidden");
+
+                // Ambil nama universitas berdasarkan ptn1 dan ptn2
+                let namaPtn1 = data.nama_universitas_1; // Menggunakan nama universitas pertama
+                let namaPtn2 = data.nama_universitas_2; // Menggunakan nama universitas kedua
+
+                // Bar Chart for Daya Tampung
+                const ctxBar = document.getElementById("comparisonChart").getContext("2d");
+                window.myBarChart = new Chart(ctxBar, {
+                    type: "bar",
+                    data: {
+                        labels: data.labels, // Tahun
+                        datasets: [
+                            {
+                                label: namaPtn1, // Gunakan nama universitas pertama
+                                backgroundColor: "#233A75", // Warna untuk universitas pertama
+                                data: data.universitas1
+                            },
+                            {
+                                label: namaPtn2, // Gunakan nama universitas kedua
+                                backgroundColor: "#4c5c9c", // Warna untuk universitas kedua
+                                data: data.universitas2
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
                     }
-                }
-            }
+                });
+
+                // Pie Chart for Peminat
+                const ctxPie = document.getElementById("peminatChart").getContext("2d");
+                window.myPieChart = new Chart(ctxPie, {
+                    type: "pie",
+                    data: {
+                        labels: [namaPtn1, namaPtn2], // Nama Universitas
+                        datasets: [{
+                            data: [
+                                data.peminat1.reduce((a, b) => a + b, 0), // Total peminat Universitas 1
+                                data.peminat2.reduce((a, b) => a + b, 0)  // Total peminat Universitas 2
+                            ],
+                            backgroundColor: ["#233A75", "#4c5c9c"], // Warna Pie Chart
+                            hoverBackgroundColor: ["#1e2d6f", "#2a3e6f"] // Warna hover
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                    }
+                });
+
+                // Displaying total peminat info
+                document.getElementById("infoPeminat").innerHTML = `
+                    ${namaPtn1} memiliki total <b>${data.peminat1.reduce((a, b) => a + b, 0)}</b> peminat dalam ${data.labels.length} tahun.<br>
+                    ${namaPtn2} memiliki total <b>${data.peminat2.reduce((a, b) => a + b, 0)}</b> peminat dalam ${data.labels.length} tahun.<br>
+                `;
+            });
         }
-    });
-
-    // Pie Chart untuk peminat jurusan
-   // Data peminat
-   const peminatData = [300, 230];
-    const totalPeminat = peminatData.reduce((a, b) => a + b, 0);
-    const persentaseUI = ((peminatData[0] / totalPeminat) * 100).toFixed(1);
-    const persentaseITB = ((peminatData[1] / totalPeminat) * 100).toFixed(1);
-
-    // Update informasi peminat
-    document.getElementById("infoPeminat").innerHTML = `
-        Universitas Indonesia memiliki <b>${peminatData[0]}</b> peminat (${persentaseUI}%).<br>
-        Institut Teknologi Bandung memiliki <b>${peminatData[1]}</b> peminat (${persentaseITB}%).<br>
-        <b>${peminatData[0] > peminatData[1] ? "Universitas Indonesia" : "Institut Teknologi Bandung"}</b> lebih diminati.
-    `;
-
-    // Pie Chart untuk peminat jurusan
-    window.myPieChart = new Chart(ctxPie, {
-        type: "pie",
-        data: {
-            labels: ["Universitas Indonesia", "Institut Teknologi Bandung"],
-            datasets: [{
-                data: peminatData,
-                backgroundColor: ["#233A75", "#4c5c9c"],
-                hoverBackgroundColor: ["#1B2D5E", "#46558f"]
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: "bottom",
-                    labels: { color: "#233A75" }
-                }
-            }
-        }
-    });
-}
 
     </script>
 </x-layout>

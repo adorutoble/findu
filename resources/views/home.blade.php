@@ -8,7 +8,7 @@
             <div class="mr-auto place-self-center lg:col-span-7">
                 <h1 class="font-[poppins] w-7xl mb-4 text-5xl font-extrabold tracking-tight leading-none">Platform terdepan temukan universitas Impianmu!</h1>
                 <p class="max-w-2xl text-lg mb-6 font-light text-gray-500 lg:mb-8">Jelajahi ribuan pilihan universitas, sesuaikan dengan minat dan kebutuhanmu, dan wujudkan masa depan yang gemilang bersama FindU.</p>
-                <a href="#" class="inline-flex items-center justify-center px-10 py-3 mr-3 text-base font-medium text-center text-white rounded-full bg-[#233A75] focus:ring-4 focus:ring-primary-300">
+                <a href="/perguruan-tinggi" class="inline-flex items-center justify-center px-10 py-3 mr-3 text-base font-medium text-center text-white rounded-full bg-[#233A75] focus:ring-4 focus:ring-primary-300">
                     Ayo Mulai!
                 </a>
             </div>
@@ -151,10 +151,10 @@
                 <div class="absolute -top-3 -left-3">
                     <img src="./img/icon-quote1.png" />
                 </div>
-                <p class="text-gray-900 text-base">
-                    GELOO bagus banget buat kamu yang masih bingung nyari universitas yang cocok sama minay dan bakay
+                <p class="text-gray-900 text-base italic">
+                    Aplikasi ini sangat membantu saya dalam menemukan kampus yang sesuai dengan jurusan impian saya
                 </p>
-                <div class="text-right text-sm font-semibold text-gray-600 mt-4">Pakri, Uniga</div>
+                <div class="text-right text-sm font-semibold text-gray-600 mt-4">Fachri, Universitas Garut</div>
                 <div class="absolute -bottom-3 -right-3">
                     <img src="./img/icon-quote2.png" />
                 </div>
@@ -165,10 +165,10 @@
                 <div class="absolute -top-3 -left-3">
                     <img src="./img/icon-quote1.png" />
                 </div>
-                <p class="text-gray-900 text-base">
-                    GELOO bagus banget buat kamu yang masih bingung nyari universitas yang cocok sama minay dan bakay
+                <p class="text-gray-900 text-base italic">
+                    Saya bisa membandingkan berbagai kampus dengan mudah hanya dalam satu aplikasi, keren!
                 </p>
-                <div class="text-right text-sm font-semibold text-gray-600 mt-4">Pakri, Uniga</div>
+                <div class="text-right text-sm font-semibold text-gray-600 mt-4">Ridwan, Universitas Brawijaya</div>
                 <div class="absolute -bottom-3 -right-3">
                     <img src="./img/icon-quote2.png" />
                 </div>

@@ -76,4 +76,41 @@ class UniversitasController extends Controller
         $universitas = Universitas::findOrFail($id);
         return view('detailpt', compact('universitas'));
     }
+
+    // public function getJurusan(Request $request)
+    // {
+    //     // Validasi request
+    //     $request->validate([
+    //         'id_univ' => 'required|exists:universitas,id_univ',
+    //     ]);
+
+    //     // Ambil data jurusan berdasarkan universitas yang dipilih
+    //     $jurusan = Jurusan::where('id_univ', $request->id_univ)->get();
+
+    //     return response()->json($jurusan);
+    // }
+
+    // public function getJurusan(Request $request)
+    // {
+    //     $jurusan = Universitas::find($request->id_univ)->jurusans;
+    //     return response()->json($jurusan);
+    // }
+
+    public function getJurusan(Request $request)
+    {
+        // Validasi id_univ yang dikirim
+        $request->validate([
+            'id_univ' => 'required|exists:universitas,id_univ',
+        ]);
+
+        // Ambil jurusan terkait dengan universitas berdasarkan id_univ
+        $universitas = Universitas::find($request->id_univ);
+        $jurusan = $universitas->jurusans;
+
+        // Kembalikan data jurusan dalam format JSON
+        return response()->json($jurusan);
+    }
+
+
+
 }

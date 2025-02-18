@@ -38,7 +38,10 @@ Route::get('/berita/{id}', [BeritaController::class, 'show'])->name('detailberit
 //     return view('perbandinganpt');
 // });
 
-Route::get('/perbandingan', [PerbandinganController::class, 'index'])->name('perbandingan');
+Route::middleware('auth')->group(function () {
+    Route::get('/perbandingan', [PerbandinganController::class, 'index'])->name('perbandingan');
+    Route::post('/bandingkan', [PerbandinganController::class, 'bandingkan'])->name('bandingkan');
+});
 
 
 // Route::get('/detail-perguruantinggi', function () {
@@ -48,6 +51,8 @@ Route::get('/perbandingan', [PerbandinganController::class, 'index'])->name('per
 
 Route::get('/perguruan-tinggi/{id}', [UniversitasController::class, 'show'])
 ->name('detailpt');
+Route::post('/get-jurusan', [UniversitasController::class, 'getJurusan'])->name('getJurusan');
+
 
 
 Route::get('/detail-beasiswa', function () {

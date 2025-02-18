@@ -18,4 +18,16 @@ class Universitas extends Model
     {
         return $this->hasMany(Fakultas::class, 'id_univ');
     }
+
+    public function jurusans()
+    {
+        return $this->belongsToMany(Jurusan::class, 'universitas_jurusans', 'id_univ', 'id_jurusan');
+    }
+
+    // Di model Universitas.php
+    public function dayaTampungs()
+    {
+        return $this->hasMany(DayaTampung::class, 'id_univ');
+    }
+
 }

@@ -20,8 +20,14 @@ class Jurusan extends Model
     }
 
     // Relasi ke Universitas
+    // public function universitas()
+    // {
+    //     return $this->belongsTo(Universitas::class, 'id_univ');
+    // }
+
     public function universitas()
     {
-        return $this->belongsTo(Universitas::class, 'id_univ');
+        return $this->belongsToMany(Universitas::class, 'universitas_jurusans', 'id_jurusan', 'id_univ');
     }
+
 }
