@@ -59,9 +59,9 @@ Route::get('/detail-beasiswa', function () {
     return view('detailbeasiswa');
 });
 
-Route::get('/detail-berita', function () {
-    return view('detailberita');
-});
+// Route::get('/detail-berita', function () {
+//     return view('detailberita');
+// });
 
 // Route::get('/dashboard', function () {
 //     return view('home');

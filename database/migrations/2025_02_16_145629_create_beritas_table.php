@@ -13,14 +13,12 @@ return new class extends Migration
     {
         Schema::create('beritas', function (Blueprint $table) {
             $table->id('id_berita'); // Primary Key
+            $table->string('penulis'); // Primary Key
             $table->string('judul_berita');
-            $table->text('deskripsi_berita')->nullable();
+            $table->text('link_gambar');
+            $table->text('narasi1')->nullable();
+            $table->text('narasi2')->nullable();
             $table->date('tanggal_rilis')->nullable();
-
-            // Foreign Key ke Universitas
-            $table->unsignedBigInteger('id_univ');
-            $table->foreign('id_univ')->references('id_univ')->on('universitas')->onDelete('cascade');
-
             $table->timestamps();
         });
     }

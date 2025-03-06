@@ -18,11 +18,12 @@ return new class extends Migration
             $table->string('no_telp')->nullable();
             $table->string('website')->nullable();
             $table->text('deskripsi_univ')->nullable();
+            $table->text('sejarah')->nullable();
             $table->string('akreditasi')->nullable();
             $table->string('stat_univ'); // Negeri / Swasta
             $table->integer('jumlah_prodi')->default(0);
-            $table->string('link_logo')->nullable();
-            $table->string('link_gambar')->nullable();
+            $table->text('link_logo')->nullable();
+            $table->text('link_gambar')->nullable();
             $table->timestamps();
         });
     }

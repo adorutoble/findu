@@ -88,7 +88,7 @@
                 @foreach($universitas as $univ)
                 {{-- <div class="bg-white shadow-sm rounded-2xl overflow-hidden w-80"> --}}
                 <a href="{{ route('detailpt', ['id' => $univ->id_univ]) }}" class="block bg-white shadow-sm rounded-2xl overflow-hidden w-80 hover:shadow-md transition">
-                        <img src="{{ $univ->link_gambar ?? 'https://via.placeholder.com/600x300' }}" alt="{{ $univ->nama_univ }}" class="w-full h-48 object-cover">
+                    <img src="{{ $univ->link_gambar ?? 'https://via.placeholder.com/600x300' }}" alt="{{ $univ->nama_univ }}" class="w-full h-48 object-cover">
                     <div class="p-5">
                         <div class="flex items-center justify-between pb-2">
                             <div class="flex items-center space-x-2">

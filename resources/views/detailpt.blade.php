@@ -49,6 +49,10 @@
             <p class="text-justify">
                 {{ $universitas->deskripsi_univ}}
             </p>
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 mt-8">Sejarah Kampus</h2>
+            <p class="text-justify">
+                {{ $universitas->sejarah}}
+            </p>
         </div>
     </section>
 
@@ -139,8 +143,6 @@
                         <th class="py-3 px-4 text-left">Jurusan</th>
                         <th class="py-3 px-4 text-left">Fakultas</th>
                         <th class="py-3 px-4 text-left">Akreditasi</th>
-                        <th class="py-3 px-4 text-left">Kuota Diterima</th>
-                        <th class="py-3 px-4 text-left">Pendaftar</th>
                         <th class="py-3 px-4 text-left">Website</th>
                     </tr>
                 </thead>

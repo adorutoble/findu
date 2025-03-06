@@ -73,7 +73,7 @@
                     <img class="w-10 h-10" src="/img/icon-book.png" alt="icon">
                     <h5 class="ml-4 text-l font-medium">Cari kampus sesuai dengan minat dan bakatmu!</h5>
                 </div>
-                <button class="bg-white text-[#233A75] px-4 py-2 rounded-full text-sm">Selengkapnya</button>
+                <a href="/perguruan-tinggi" class="bg-white text-[#233A75] rounded-full px-4 py-2 text-sm">Selengkapnya</a>
             </div>
             
             <div class="flex items-center bg-[#233A75] text-white p-6 rounded-xl shadow-lg w-full justify-between">
@@ -81,7 +81,7 @@
                     <img class="w-10 h-10" src="/img/icon-building.png" alt="icon">
                     <h5 class="ml-4 text-l font-medium">Bandingkan kampus pilihanmu!</h5>
                 </div>
-                <button class="bg-white text-[#233A75] px-4 py-2 rounded-full text-sm">Selengkapnya</button>
+                <a href="/perbandingan" class="bg-white text-[#233A75] rounded-full px-4 py-2 text-sm">Selengkapnya</a>
             </div>
             
             <div class="flex items-center bg-[#233A75] text-white p-6 rounded-xl shadow-lg w-full justify-between">
@@ -89,7 +89,7 @@
                     <img class="w-10 h-10" src="/img/icon-calendar.png" alt="icon">
                     <h5 class="ml-4 text-l font-medium">Lihat jadwal pendaftaran dibuka</h5>
                 </div>
-                <button class="bg-white text-[#233A75] px-4 py-2 rounded-full text-sm">Selengkapnya</button>
+                <a href="/perguruan-tinggi" class="bg-white text-[#233A75] rounded-full px-4 py-2 text-sm">Selengkapnya</a>
             </div>
             
             <div class="flex items-center bg-[#233A75] text-white p-6 rounded-xl shadow-lg w-full justify-between">
@@ -97,7 +97,7 @@
                     <img class="w-10 h-10" src="/img/icon-paper.png" alt="icon">
                     <h5 class="ml-4 text-l font-medium">Ikuti berita terkini tentang Perguruan Tinggi</h5>
                 </div>
-                <button class="bg-white text-[#233A75] px-4 py-2 rounded-full text-sm">Selengkapnya</button>
+                <a href="/berita" class="bg-white text-[#233A75] rounded-full px-4 py-2 text-sm">Selengkapnya</a>
             </div>
         </div>
     </div>

@@ -34,13 +34,13 @@
             
             <div class="bg-[#233A75] text-white p-4 rounded-lg">
                 <h2 class="font-semibold">Pilihan Kedua</h2>
-                <select class="mt-2 w-full p-2 text-black rounded-xl" id="ptn2" onchange="loadJurusan(2)">
+                <select class="mt-2 w-full p-2 text-black rounded-xl" id="ptn2" onchange="loadJurusan(2)" disabled>
                     <option value="">Pilih Perguruan Tinggi</option>
                     @foreach ($universitas as $univ)
                         <option value="{{ $univ->id_univ }}">{{ $univ->nama_univ }}</option>
                     @endforeach
                 </select>
-                <select class="mt-2 w-full p-2 text-black rounded-md" id="prodi2">
+                <select class="mt-2 w-full p-2 text-black rounded-md" id="prodi2" disabled>
                     <option>Pilih Program Studi</option>
                 </select>
             </div>
@@ -79,19 +79,28 @@
                         <p class="mt-1 text-sm text-gray-700" id="infoPeminat">Belum ada data.</p>
                     </div>
                 </div>
-            </div>
-                        
+            </div>                        
         </div>
     </section>
 
     <script>
-        document.getElementById("ptn1").addEventListener("change", function () {
-            loadJurusan(1);
-        });
-        document.getElementById("ptn2").addEventListener("change", function () {
-            loadJurusan(2);
+        // Fungsi untuk mengontrol status pilihan kedua
+        document.getElementById("ptn1").addEventListener("change", function() {
+            const ptn2 = document.getElementById("ptn2");
+            const prodi2 = document.getElementById("prodi2");
+            
+            if (this.value) {
+                ptn2.disabled = false;
+                prodi2.disabled = false;
+            } else {
+                ptn2.disabled = true;
+                prodi2.disabled = true;
+                ptn2.selectedIndex = 0;
+                prodi2.innerHTML = "<option>Pilih Program Studi</option>";
+            }
         });
 
+        // Fungsi load jurusan
         function loadJurusan(id) {
             let ptn = document.getElementById("ptn" + id).value;
             let prodi = document.getElementById("prodi" + id);
@@ -117,9 +126,9 @@
                 });
             })
             .catch(error => console.error("Error:", error));
-
         }
 
+        // Fungsi untuk menampilkan perbandingan
         function showComparison() {
             let ptn1 = document.getElementById("ptn1").value;
             let prodi1 = document.getElementById("prodi1").value;
@@ -141,25 +150,24 @@
 
                 document.getElementById("comparisonContainer").classList.remove("hidden");
 
-                // Ambil nama universitas berdasarkan ptn1 dan ptn2
-                let namaPtn1 = data.nama_universitas_1; // Menggunakan nama universitas pertama
-                let namaPtn2 = data.nama_universitas_2; // Menggunakan nama universitas kedua
+                let namaPtn1 = data.nama_universitas_1;
+                let namaPtn2 = data.nama_universitas_2;
 
-                // Bar Chart for Daya Tampung
+                // Bar Chart
                 const ctxBar = document.getElementById("comparisonChart").getContext("2d");
                 window.myBarChart = new Chart(ctxBar, {
                     type: "bar",
                     data: {
-                        labels: data.labels, // Tahun
+                        labels: data.labels,
                         datasets: [
                             {
-                                label: namaPtn1, // Gunakan nama universitas pertama
-                                backgroundColor: "#233A75", // Warna untuk universitas pertama
+                                label: namaPtn1,
+                                backgroundColor: "#233A75",
                                 data: data.universitas1
                             },
                             {
-                                label: namaPtn2, // Gunakan nama universitas kedua
-                                backgroundColor: "#4c5c9c", // Warna untuk universitas kedua
+                                label: namaPtn2,
+                                backgroundColor: "#4c5c9c",
                                 data: data.universitas2
                             }
                         ]
@@ -175,19 +183,19 @@
                     }
                 });
 
-                // Pie Chart for Peminat
+                // Pie Chart
                 const ctxPie = document.getElementById("peminatChart").getContext("2d");
                 window.myPieChart = new Chart(ctxPie, {
                     type: "pie",
                     data: {
-                        labels: [namaPtn1, namaPtn2], // Nama Universitas
+                        labels: [namaPtn1, namaPtn2],
                         datasets: [{
                             data: [
-                                data.peminat1.reduce((a, b) => a + b, 0), // Total peminat Universitas 1
-                                data.peminat2.reduce((a, b) => a + b, 0)  // Total peminat Universitas 2
+                                data.peminat1.reduce((a, b) => a + b, 0),
+                                data.peminat2.reduce((a, b) => a + b, 0)
                             ],
-                            backgroundColor: ["#233A75", "#4c5c9c"], // Warna Pie Chart
-                            hoverBackgroundColor: ["#1e2d6f", "#2a3e6f"] // Warna hover
+                            backgroundColor: ["#233A75", "#4c5c9c"],
+                            hoverBackgroundColor: ["#1e2d6f", "#2a3e6f"]
                         }]
                     },
                     options: {
@@ -196,13 +204,12 @@
                     }
                 });
 
-                // Displaying total peminat info
+                // Info Peminat
                 document.getElementById("infoPeminat").innerHTML = `
                     ${namaPtn1} memiliki total <b>${data.peminat1.reduce((a, b) => a + b, 0)}</b> peminat dalam ${data.labels.length} tahun.<br>
                     ${namaPtn2} memiliki total <b>${data.peminat2.reduce((a, b) => a + b, 0)}</b> peminat dalam ${data.labels.length} tahun.<br>
                 `;
             });
         }
-
     </script>
 </x-layout>

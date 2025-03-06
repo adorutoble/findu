@@ -20,8 +20,8 @@ return new class extends Migration
             $table->foreign('id_fakultas')->references('id_fakultas')->on('fakultas')->onDelete('cascade');
 
             // Foreign Key ke Universitas
-            $table->unsignedBigInteger('id_univ');
-            $table->foreign('id_univ')->references('id_univ')->on('universitas')->onDelete('cascade');
+            // $table->unsignedBigInteger('id_univ');
+            // $table->foreign('id_univ')->references('id_univ')->on('universitas')->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -18,4 +18,13 @@ class Beasiswa extends Model
     {
         return $this->belongsTo(Universitas::class, 'id_univ');
     }
+
+    //  public function persyaratan()
+    // {
+    //     return $this->hasMany(PersyaratanBeasiswa::class, 'id_beasiswa');
+    // }
+    public function persyaratan()
+    {
+        return $this->hasMany(PersyaratanBeasiswa::class, 'id_beasiswa');
+    }
 }

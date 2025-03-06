@@ -1,5 +1,5 @@
 <x-layout>
-
+    
      <section>
         <div class="relative bg-[#233A75] h-56 text-white py-10 px-6 flex items-center justify-between">
         </div>
@@ -18,25 +18,11 @@
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
                     <!-- Judul Deskripsi -->
                     <h1 class="text-xl font-bold text-center mb-4">Deskripsi Beasiswa</h1>
-                    
+        
                     <!-- Konten Deskripsi -->
                     <p class="text-gray-700">
-                        Beasiswa IDCloudhost adalah beasiswa yang diselenggarakan oleh IDCloudhost bekerja sama dengan Telkom University. 
-                        Manfaat yang akan didapat oleh mahasiswa penerima beasiswa ini adalah:
+                        {{ $beasiswa->deskripsi }}
                     </p>
-                    
-                    <!-- List Manfaat Beasiswa -->
-                    <ul class="mt-4 list-disc list-inside space-y-2 text-gray-700">
-                        <li>
-                            <span class="font-semibold">Beasiswa:</span> Mendapatkan pendanaan penuh* dari IDCloudHost untuk membantu Anda meraih cita-cita dan masa depan cemerlang.
-                        </li>
-                        <li>
-                            <span class="font-semibold">Pengalaman Kerja:</span> Penerima beasiswa diberikan kesempatan untuk mengembangkan potensi diri dengan pengalaman bekerja di IDCloudHost.
-                        </li>
-                        <li>
-                            <span class="font-semibold">Bonus:</span> Mendapatkan berbagai bonus tambahan dengan bergabung dalam Program Beasiswa IDCloudHost.
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>    
@@ -51,22 +37,13 @@
                     
                     <!-- List Manfaat Beasiswa -->
                     <ul class="mt-4 list-disc list-inside space-y-2 text-white">
-                        <li>
-                            Diperuntukkan bagi Siswa/i lulusan SMA/SMK/MA Sederajat kelas 12 atau yang sudah lulus maksimal Lima tahun s ebelumnya.
-                        </li>
-                        <li>
-                            Memiliki Visi yang jelas dan motivasi yang kuat untuk menggapai cita-cita dan berkontribusi untuk perubahan bangsa dan negara.
-                        </li>
-                        <li>
-                        Memiliki prestasi yang cukup atau lebih baik dalam bidang akademik dan non akademik
-                        </li>
-                        <li>
-                            Memiliki pengalaman berorganisasi.
-                        </li>
-                        <li>
-                            Keputusan penyelenggara terkait program Beasiswa IDCloudHost adalah mutlak dan tidak dapat diganggu gugat.
-                        </li>
+                        @foreach ($beasiswa->persyaratan as $p)
+                            <li>{{ $p->persyaratan }}</li>
+                        @endforeach
                     </ul>
+                    {{-- <p class="text-white">
+                        {{ $beasiswa->persyaratan }}
+                    </p> --}}
                 </div>
             </div>
         </div>    
@@ -83,16 +60,16 @@
                 <!-- Pendaftaran -->
                 <div class="text-center">
                     <div class="flex justify-center mb-4">
-                        <div class="bg-blue-900 p-3 rounded-full">
-                            <img src="./img/icon-calendar.svg" alt="Calendar" class="w-6 h-6">
+                        <div class="bg-[#1d3369] p-3 rounded-full">
+                            {{-- <img src="./img/icon-calendar.svg" alt="Calendar" class="w-6 h-6"> --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.5 5V3m-9 2V3M3.25 8h17.5M3 10.044c0-2.115 0-3.173.436-3.981a3.9 3.9 0 0 1 1.748-1.651C6.04 4 7.16 4 9.4 4h5.2c2.24 0 3.36 0 4.216.412c.753.362 1.364.94 1.748 1.65c.436.81.436 1.868.436 3.983v4.912c0 2.115 0 3.173-.436 3.981a3.9 3.9 0 0 1-1.748 1.651C17.96 21 16.84 21 14.6 21H9.4c-2.24 0-3.36 0-4.216-.412a3.9 3.9 0 0 1-1.748-1.65C3 18.128 3 17.07 3 14.955z"/></svg>
                         </div>
                     </div>
                     <h3 class="text-lg font-semibold">Pendaftaran</h3>
-                    <p class="text-sm text-gray-600">24 Februari - 18 Juni 2024</p>
+                    <p class="text-sm text-gray-600">Belum tersedia</p>
                     <div class="bg-white shadow-md rounded-lg p-4 mt-4">
                         <p class="text-sm text-gray-700">
-                            Pendaftaran Jalur Beasiswa IDCloudhost dilakukan secara online pada Aplikasi 
-                            <a href="#" class="text-blue-700 font-semibold">Pendaftaran Beasiswa IDCloudhost</a>
+                            Informasi belum tersedia, mohon menunggu update selenjutnya 
                         </p>
                     </div>
                 </div>
@@ -101,16 +78,17 @@
                 <div class="text-center">
                     <div class="flex justify-center mb-4">
                         <div class="bg-[#1d3369] p-3 rounded-full">
-                            <img src="./img/icon-calendar.svg" alt="Calendar" class="w-6 h-6">
+                            {{-- <img src="./img/icon-calendar.svg" alt="Calendar" class="w-6 h-6"> --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48"><g fill="#fff"><path d="M20 15a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2h-8a1 1 0 0 1-1-1m1 3a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2zm-1 10a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2h-8a1 1 0 0 1-1-1m1 3a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2z"/><path fill-rule="evenodd" d="M10 27a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1zm2 1v3h3v-3z" clip-rule="evenodd"/><path d="M17.707 15.707a1 1 0 0 0-1.414-1.414L13 17.586l-1.293-1.293a1 1 0 0 0-1.414 1.414L13 20.414z"/><path fill-rule="evenodd" d="M10 6a4 4 0 0 0-4 4v28a4 4 0 0 0 4 4h20a4 4 0 0 0 4-4V10a4 4 0 0 0-4-4zm-2 4a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2zm28 6a3 3 0 1 1 6 0v20.303l-3 4.5l-3-4.5zm3-1a1 1 0 0 0-1 1v2h2v-2a1 1 0 0 0-1-1m0 22.197l-1-1.5V20h2v15.697z" clip-rule="evenodd"/></g></svg>
                         </div>
                     </div>
                     <h3 class="text-lg font-semibold">Online Tes</h3>
-                    <p class="text-sm text-gray-600">24 Juni - 2 Juli 2024</p>
+                    <p class="text-sm text-gray-600">Belum tersedia</p>
                     <div class="bg-[#1d3369] text-white shadow-md rounded-lg p-4 mt-4 text-left">
                         <p class="text-sm">
-                            Calon peserta wajib mengikuti tes online melalui 2 tahap sesuai jurusan dan kompetensi yang dipilih.
+                            Informasi belum tersedia, mohon menunggu update selenjutnya 
                         </p>
-                        <p class="mt-3 font-semibold">Materi Tes:</p>
+                        {{-- <p class="mt-3 font-semibold">Materi Tes:</p>
                         <ul class="list-disc list-inside text-sm">
                             <li>Penalaran Umum</li>
                             <li>Pengetahuan Kuantitatif</li>
@@ -119,7 +97,7 @@
                             <li>Literasi Dalam Bahasa Indonesia</li>
                             <li>Literasi Dalam Bahasa Inggris</li>
                             <li>Penalaran Matematika</li>
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
     
@@ -127,15 +105,15 @@
                 <div class="text-center">
                     <div class="flex justify-center mb-4">
                         <div class="bg-[#1d3369] p-3 rounded-full">
-                            <img src="./img/icon-calendar.svg" alt="Calendar" class="w-6 h-6">
+                            {{-- <img src="./img/icon-calendar.svg" alt="Calendar" class="w-6 h-6"> --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17a2 2 0 1 0 4 0a2 2 0 1 0-4 0m5 5a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2m-3.546-2.03A9.9 9.9 0 0 1 7.7 19L3 20l1.3-3.9C1.976 12.663 2.874 8.228 6.4 5.726c3.526-2.501 8.59-2.296 11.845.48c1.667 1.423 2.596 3.294 2.747 5.216"/></svg>
                         </div>
                     </div>
                     <h3 class="text-lg font-semibold">Wawancara</h3>
-                    <p class="text-sm text-gray-600">9 Juli - 12 Juli 2024</p>
+                    <p class="text-sm text-gray-600">Belum tersedia</p>
                     <div class="bg-white shadow-md rounded-lg p-4 mt-4">
                         <p class="text-sm text-gray-700">
-                            Peserta yang lolos akan melakukan tes wawancara online dengan tim seleksi Beasiswa IDCloudhost. 
-                            Siapkan berkas-berkas yang dibutuhkan.
+                            Informasi belum tersedia, mohon menunggu update selenjutnya 
                         </p>
                     </div>
                 </div>
@@ -144,16 +122,15 @@
                 <div class="text-center">
                     <div class="flex justify-center mb-4">
                         <div class="bg-[#1d3369] p-3 rounded-full">
-                            <img src="./img/icon-calendar.svg" alt="Calendar" class="w-6 h-6">
+                            {{-- <img src="./img/icon-calendar.svg" alt="Calendar" class="w-6 h-6"> --}}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m9 12l2 2l4-4"/><path d="M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14m2 0H2"/></g></svg>
                         </div>
                     </div>
                     <h3 class="text-lg font-semibold">Pengumuman</h3>
-                    <p class="text-sm text-gray-600">28 Juli 2024</p>
+                    <p class="text-sm text-gray-600">Belum tersedia</p>
                     <div class="bg-[#1d3369] text-white shadow-md rounded-lg p-4 mt-4">
                         <p class="text-sm">
-                            Pengumuman penerima beasiswa akan dipublikasikan di Website dan 
-                            Social Media IDCloudhost. Jangan lupa follow akun IDCloudhost untuk info terbaru.
-                        </p>
+                            Informasi belum tersedia, mohon menunggu update selenjutnya 
                     </div>
                 </div>
             </div>

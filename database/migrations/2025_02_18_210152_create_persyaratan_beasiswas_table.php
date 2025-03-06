@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fakultas', function (Blueprint $table) {
-            $table->id('id_fakultas'); // Primary Key
-            $table->string('nama_fakultas');
-            $table->unsignedBigInteger('id_univ'); // Foreign Key ke Universitas
-            $table->foreign('id_univ')->references('id_univ')->on('universitas')->onDelete('cascade');
+        Schema::create('persyaratan_beasiswas', function (Blueprint $table) {
+            $table->id('id_persyaratan');
+            $table->unsignedBigInteger('id_beasiswa');
+            $table->foreign('id_beasiswa')->references('id_beasiswa')->on('beasiswas')->onDelete('cascade');
+            $table->text('persyaratan');
             $table->timestamps();
         });
     }
@@ -25,7 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fakultas');
+        Schema::dropIfExists('persyaratan_beasiswas');
     }
 };
-

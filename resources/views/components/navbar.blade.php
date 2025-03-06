@@ -13,7 +13,6 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 inline-block" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.88l3.71-3.69a.75.75 0 011.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01-.02-1.06z" clip-rule="evenodd"/>
                             </svg>
-                            
                         </button>
                         <div class="absolute right-0 hidden bg-white shadow-md rounded-lg w-40 mt-2 group-hover:block">
                             <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
@@ -39,23 +38,23 @@
 
             <ul class="flex flex-col mt-4 font-medium gap-4 lg:flex-row lg:space-x-8 lg:mt-0">
                 <li>
-                    <a href="/" class="block py-2 pr-4 pl-3 text-white rounded bg-[#233A75] lg:bg-transparent lg:text-[#233A75] lg:p-0" aria-current="page">Beranda</a>
+                    <a href="/" class="block py-2 pr-4 pl-3 text-white rounded {{ request()->is('/') ? 'bg-[#233A75]' : 'lg:bg-transparent lg:text-[#233A75]' }} lg:p-0" aria-current="page">Beranda</a>
                 </li>
                 <li>
-                    <a href="{{ route('perguruan-tinggi') }}" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-[#233A75] lg:p-0">Perguruan Tinggi</a>
+                    <a href="{{ route('perguruan-tinggi') }}" class="block py-2 pr-4 pl-3 {{ request()->is('perguruan-tinggi') ? 'text-[#233A75] bg-transparent' : 'text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-[#233A75]' }} lg:p-0">Perguruan Tinggi</a>
                 </li>
             
                 @auth
                     <li>
-                        <a href="{{ route('perbandingan') }}" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-[#233A75] lg:p-0">Bandingkan PT</a>
+                        <a href="{{ route('perbandingan') }}" class="block py-2 pr-4 pl-3 {{ request()->is('perbandingan') ? 'text-[#233A75] bg-transparent' : 'text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-[#233A75]' }} lg:p-0">Bandingkan PT</a>
                     </li>
                 @endauth
             
                 <li>
-                    <a href="{{ route('beasiswa') }}" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-[#233A75] lg:p-0">Beasiswa</a>
+                    <a href="{{ route('beasiswa') }}" class="block py-2 pr-4 pl-3 {{ request()->is('beasiswa') ? 'text-[#233A75] bg-transparent' : 'text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-[#233A75]' }} lg:p-0">Beasiswa</a>
                 </li>
                 <li>
-                    <a href="{{ route('berita') }}" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-[#233A75] lg:p-0">Berita</a>
+                    <a href="{{ route('berita') }}" class="block py-2 pr-4 pl-3 {{ request()->is('berita') ? 'text-[#233A75] bg-transparent' : 'text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-[#233A75]' }} lg:p-0">Berita</a>
                 </li>
             </ul>            
         </div>

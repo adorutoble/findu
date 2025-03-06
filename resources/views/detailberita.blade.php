@@ -14,12 +14,11 @@
 
                 <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 relative">
                     <h1 class="text-xl font-bold">
-                        SNBT : Pendaftaran Masuk Perguruan Tinggi Dimulai, Simak Jadwal 
-                        UTBK-SNBT 2025, Aturan Baru, Syarat, Biaya & Tahap Pendaftaran 
+                        {{ $berita->judul_berita }} 
                     </h1>
                     <div class="mt-2">
-                        <p class="text-sm text-gray-600">Jane Doe</p>
-                        <p class="text-sm text-gray-600">Kamis, 14 November 2024</p>
+                        <p class="text-sm text-gray-600">{{ $berita->penulis }}</p>
+                        <p class="text-sm text-gray-600">{{ $berita->tanggal_rilis }}</p>
                     </div>
                 </div>
             </div>
@@ -29,10 +28,12 @@
     <section>
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 p-6 relative">
             <div class="max-w-5xl mx-auto">
-            <p class="font-light">
-                Akhirnya, pemerintah mengumumkan jadwal UTBK SNBT 2024, beserta syarat, materi, tahapan pendataran, dan aturan barunya. Pastinya, kamu sudah menunggu-nunggu dong? Just to remind you, seperti tahun sebelumnya, UTBK tahun 2024 mendatang tidak lagi diselenggarakan oleh LTMPT, melainkan digantikan oleh BP3. Selain itu, tes yang diujikan juga tetap sama, yaitu TPS, Tes Literasi, dan Penalaran Matematik. Tapi, ada sedikit perubahan nih dari materi soal dan pemilihan program studinya. Wah, gimana tuh ya?
-                <br>
-                Nah, supaya kamu nggak bingung, langsung aja yuk kamu simak dan catat informasi lengkap seputar aturan baru dan jadwal pelaksanaan UTBK SNBT tahun 2024 mendatang!
+            <p class="font-light text-justify mb-6">
+                {{ $berita->narasi1 }}
+            </p>
+            <img src="{{ $berita->link_gambar }}" alt="img" class="rounded-md mx-auto">
+            <p class="font-light text-justify mt-6">
+                {{ $berita->narasi2 }}
             </p>
             </div>
     </section>
